@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Elite Fiber — Fast Reliable Unlimited Internet Service</title>
+<meta name="description" content="Elite Fiber offers high-speed unlimited fiber internet in Nairobi starting at Ksh 1,500/month. Fast installation, guaranteed speeds, 24/7 support."/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1a1a1a;}
+a{text-decoration:none;}
+
+.topbar{background:#0a2a0a;color:rgba(255,255,255,0.7);font-size:12px;padding:8px 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.topbar a{color:#06d6a0;margin-left:1rem;}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:100;}
+.nav-logo{font-size:22px;font-weight:500;color:#0a2a0a;letter-spacing:-0.5px;}
+.nav-logo span{color:#cc0000;}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{color:#444;font-size:14px;cursor:pointer;transition:color 0.2s;}
+.nav-links a:hover{color:#cc0000;}
+.nav-cta{background:#cc0000;color:#fff;border:none;padding:9px 22px;border-radius:6px;font-size:14px;cursor:pointer;}
+.nav-cta:hover{background:#aa0000;}
+
+.section{display:none;}
+.section.active{display:block;}
+
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:520px;overflow:hidden;}
+.hero-left{background:#0a2a0a;padding:4rem 3rem;display:flex;flex-direction:column;justify-content:center;}
+.hero-eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#06d6a0;margin-bottom:1rem;}
+.hero-title{font-size:42px;font-weight:500;color:#fff;line-height:1.15;letter-spacing:-1px;margin-bottom:1.25rem;}
+.hero-title em{color:#cc0000;font-style:normal;}
+.hero-sub{font-size:15px;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:2rem;max-width:360px;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-red{background:#cc0000;color:#fff;border:none;padding:12px 28px;border-radius:7px;font-size:14px;cursor:pointer;}
+.btn-red:hover{background:#aa0000;}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3);padding:12px 28px;border-radius:7px;font-size:14px;cursor:pointer;}
+.btn-ghost:hover{border-color:#fff;}
+.hero-right{position:relative;overflow:hidden;}
+.hero-right img{width:100%;height:100%;object-fit:cover;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,42,10,0.3),transparent);}
+
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);background:#cc0000;}
+.stat-item{padding:1.25rem 1rem;text-align:center;border-right:1px solid rgba(255,255,255,0.2);}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-size:24px;font-weight:500;color:#fff;}
+.stat-lbl{font-size:11px;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
+
+.services{padding:5rem 2rem;background:#fff;}
+.section-eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#cc0000;text-align:center;margin-bottom:0.5rem;}
+.section-title{font-size:30px;font-weight:500;text-align:center;margin-bottom:0.75rem;letter-spacing:-0.5px;}
+.section-sub{font-size:14px;color:#666;text-align:center;max-width:500px;margin:0 auto 3rem;line-height:1.7;}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;max-width:860px;margin:0 auto;}
+.svc{border:0.5px solid #e5e5e5;border-radius:12px;overflow:hidden;}
+.svc-img{height:160px;overflow:hidden;}
+.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.3s;}
+.svc:hover .svc-img img{transform:scale(1.04);}
+.svc-body{padding:1.25rem;}
+.svc-icon{width:36px;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:0.75rem;}
+.svc-icon i{font-size:18px;color:#fff;}
+.svc h3{font-size:15px;font-weight:500;margin-bottom:6px;}
+.svc p{font-size:13px;color:#666;line-height:1.6;}
+
+.about-split{display:grid;grid-template-columns:1fr 1fr;overflow:hidden;}
+.about-img{position:relative;min-height:400px;}
+.about-img img{width:100%;height:100%;object-fit:cover;}
+.about-content{background:#f8f8f6;padding:4rem 3rem;display:flex;flex-direction:column;justify-content:center;}
+.about-content h2{font-size:28px;font-weight:500;margin-bottom:1rem;letter-spacing:-0.5px;}
+.about-content p{font-size:14px;color:#666;line-height:1.8;margin-bottom:1rem;}
+.about-bullets{list-style:none;margin:1.5rem 0;}
+.about-bullets li{font-size:14px;color:#555;padding:6px 0;display:flex;align-items:center;gap:10px;}
+.about-bullets li i{color:#0a2a0a;font-size:16px;}
+.btn-dark{background:#0a2a0a;color:#fff;border:none;padding:12px 28px;border-radius:7px;font-size:14px;cursor:pointer;display:inline-block;margin-top:0.5rem;}
+.btn-dark:hover{background:#1a4a1a;}
+
+.packages-section{padding:5rem 2rem;background:#f5f5f3;}
+.pkg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.25rem;max-width:860px;margin:0 auto;}
+.pkg{background:#fff;border:0.5px solid #e5e5e5;border-radius:12px;padding:1.75rem 1.5rem;position:relative;transition:transform 0.2s;}
+.pkg:hover{transform:translateY(-3px);}
+.pkg.featured{border:2px solid #cc0000;}
+.pkg-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#cc0000;color:#fff;font-size:11px;padding:4px 16px;border-radius:20px;white-space:nowrap;}
+.pkg-name{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:#888;margin-bottom:0.5rem;}
+.pkg-speed{font-size:36px;font-weight:500;color:#0a2a0a;line-height:1;}
+.pkg-speed span{font-size:14px;font-weight:400;color:#888;}
+.pkg-divider{border:none;border-top:0.5px solid #e5e5e5;margin:1rem 0;}
+.pkg-price{font-size:26px;font-weight:500;color:#cc0000;}
+.pkg-price small{font-size:13px;font-weight:400;color:#888;}
+.pkg-list{list-style:none;margin:1rem 0 1.5rem;}
+.pkg-list li{font-size:13px;color:#666;padding:5px 0;display:flex;align-items:center;gap:8px;}
+.pkg-list li i{color:#059669;font-size:14px;}
+.pkg-btn{width:100%;padding:10px;border-radius:6px;font-size:14px;cursor:pointer;border:1.5px solid #0a2a0a;background:transparent;color:#0a2a0a;transition:all 0.2s;}
+.pkg.featured .pkg-btn{background:#cc0000;color:#fff;border-color:#cc0000;}
+.pkg-btn:hover{background:#0a2a0a;color:#fff;}
+.pkg.featured .pkg-btn:hover{background:#aa0000;border-color:#aa0000;}
+.pkg-note{text-align:center;margin-top:2rem;font-size:13px;color:#888;}
+.pkg-note strong{color:#1a1a1a;}
+
+.why{padding:5rem 2rem;background:#fff;}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;max-width:860px;margin:0 auto;}
+.why-item{text-align:center;padding:1.5rem 1rem;}
+.why-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;}
+.why-icon i{font-size:22px;color:#fff;}
+.why-item h3{font-size:14px;font-weight:500;margin-bottom:6px;}
+.why-item p{font-size:12px;color:#888;line-height:1.6;}
+
+.cta-banner{background:#0a2a0a;padding:4rem 2rem;text-align:center;}
+.cta-banner h2{font-size:28px;font-weight:500;color:#fff;margin-bottom:0.75rem;letter-spacing:-0.5px;}
+.cta-banner p{font-size:14px;color:rgba(255,255,255,0.6);margin-bottom:2rem;}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.wa-btn{background:#25D366;color:#fff;border:none;padding:13px 26px;border-radius:8px;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px;text-decoration:none;}
+.call-btn{background:#cc0000;color:#fff;border:none;padding:13px 26px;border-radius:8px;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px;text-decoration:none;}
+
+.contact-page{padding:5rem 2rem;background:#f5f5f3;min-height:80vh;}
+.contact-wrap{max-width:680px;margin:0 auto;}
+.contact-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;}
+.ccard{background:#fff;border:0.5px solid #e5e5e5;border-radius:12px;padding:1.75rem;text-align:center;}
+.ccard i{font-size:30px;margin-bottom:0.75rem;display:block;}
+.ccard.ph i{color:#cc0000;}
+.ccard.wa i{color:#25D366;}
+.ccard h3{font-size:14px;font-weight:500;margin-bottom:4px;}
+.ccard p{font-size:13px;color:#888;}
+.ccard a{color:#cc0000;font-size:15px;font-weight:500;display:block;margin-top:10px;}
+.signup-box{background:#0a2a0a;border-radius:12px;padding:2.5rem;text-align:center;color:#fff;}
+.signup-box h3{font-size:22px;font-weight:500;margin-bottom:0.5rem;}
+.signup-box p{font-size:14px;color:rgba(255,255,255,0.6);margin-bottom:2rem;line-height:1.7;}
+
+.about-page{padding:5rem 2rem;background:#fff;min-height:80vh;}
+.about-page-inner{max-width:800px;margin:0 auto;}
+.about-page-inner p{font-size:15px;color:#666;line-height:1.8;margin-bottom:1.25rem;}
+.values{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2.5rem;}
+.val{border-radius:8px;padding:1.5rem;border:0.5px solid #e5e5e5;}
+.val i{font-size:22px;margin-bottom:0.75rem;display:block;}
+.val h4{font-size:14px;font-weight:500;margin-bottom:4px;}
+.val p{font-size:12px;color:#888;line-height:1.6;}
+
+.footer{background:#0a2a0a;padding:3rem 2rem 1.5rem;color:rgba(255,255,255,0.5);}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem;max-width:860px;margin:0 auto 2rem;}
+.footer h4{color:#fff;font-size:13px;font-weight:500;margin-bottom:1rem;letter-spacing:0.5px;}
+.footer p{font-size:12px;line-height:1.8;}
+.footer-links{list-style:none;}
+.footer-links li{margin-bottom:6px;}
+.footer-links a{font-size:12px;color:rgba(255,255,255,0.5);cursor:pointer;}
+.footer-links a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.25rem;text-align:center;font-size:12px;max-width:860px;margin:0 auto;}
+
+@media(max-width:700px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{height:220px;}
+  .about-split{grid-template-columns:1fr;}
+  .about-img{min-height:220px;}
+  .stats-bar{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .contact-cards{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span><i class="ti ti-phone" style="font-size:12px;vertical-align:-1px;margin-right:4px;"></i>0769 383 683</span>
+  <span>Fast Reliable Unlimited Internet Service — Nairobi</span>
+</div>
+
+<nav class="nav">
+  <div class="nav-logo"><span>Elite</span> Fiber</div>
+  <div class="nav-links">
+    <a onclick="show('home')">Home</a>
+    <a onclick="show('packages')">Packages</a>
+    <a onclick="show('about')">About</a>
+    <a onclick="show('contact')">Contact</a>
+  </div>
+  <button class="nav-cta" onclick="show('contact')">Get connected</button>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="section active">
+  <div class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">// Elite Fiber — Nairobi</p>
+      <h1 class="hero-title">Experience<br><em>Unmatched</em><br>Speed at Home</h1>
+      <p class="hero-sub">Seamless browsing, uninterrupted streaming, and reliable fiber connectivity — starting at Ksh 1,500/month.</p>
+      <div class="hero-btns">
+        <button class="btn-red" onclick="show('packages')">See packages</button>
+        <button class="btn-ghost" onclick="show('contact')">Talk to us</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800&q=80" alt="Family enjoying fast fiber internet at home"/>
+      <div class="hero-overlay"></div>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-num">10–25</div><div class="stat-lbl">Mbps speeds</div></div>
+    <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-lbl">Support</div></div>
+    <div class="stat-item"><div class="stat-num">Ksh 1,500</div><div class="stat-lbl">From</div></div>
+    <div class="stat-item"><div class="stat-num">Ksh 2,000</div><div class="stat-lbl">Install fee</div></div>
+  </div>
+
+  <div class="services">
+    <p class="section-eyebrow">// What we offer</p>
+    <h2 class="section-title">Fiber built for your life</h2>
+    <p class="section-sub">We install fiber directly to your home, delivering guaranteed speeds for every device in the house.</p>
+    <div class="services-grid">
+      <div class="svc">
+        <div class="svc-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Fiber optic cable installation"/></div>
+        <div class="svc-body">
+          <div class="svc-icon" style="background:#cc0000;"><i class="ti ti-home"></i></div>
+          <h3>Fiber to the home</h3>
+          <p>We run fiber directly from our network to your door — no shared copper, no slowdowns.</p>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="svc-img"><img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80" alt="Streaming entertainment at home"/></div>
+        <div class="svc-body">
+          <div class="svc-icon" style="background:#0a2a0a;"><i class="ti ti-device-tv"></i></div>
+          <h3>Stream everything</h3>
+          <p>Netflix, TikTok, YouTube — our speeds handle it all without buffering or drops.</p>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="svc-img"><img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&q=80" alt="Working from home with fast internet"/></div>
+        <div class="svc-body">
+          <div class="svc-icon" style="background:#2563eb;"><i class="ti ti-briefcase"></i></div>
+          <h3>Work from home</h3>
+          <p>Stable, symmetric speeds for video calls, cloud tools, and remote work every day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-split">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80" alt="Fiber optic network infrastructure"/>
+    </div>
+    <div class="about-content">
+      <p class="section-eyebrow" style="text-align:left;margin-bottom:0.75rem;">// Get to know us</p>
+      <h2>Local fiber, real speeds, honest prices</h2>
+      <p>Elite Fiber is a Nairobi-based ISP built on one belief — fast, reliable internet should be affordable for every home. We own our infrastructure and stand behind every connection we install.</p>
+      <ul class="about-bullets">
+        <li><i class="ti ti-check"></i> Guaranteed speeds — no throttling</li>
+        <li><i class="ti ti-check"></i> Truly unlimited data — no caps</li>
+        <li><i class="ti ti-check"></i> Local team, fast response</li>
+        <li><i class="ti ti-check"></i> One-time Ksh 2,000 installation</li>
+      </ul>
+      <button class="btn-dark" onclick="show('about')">Learn more about us</button>
+    </div>
+  </div>
+
+  <div class="why">
+    <p class="section-eyebrow">// Why choose us</p>
+    <h2 class="section-title">Why Elite Fiber</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon" style="background:#cc0000;"><i class="ti ti-bolt"></i></div>
+        <h3>Fast installation</h3>
+        <p>Connected in one visit. One-time Ksh 2,000 setup fee.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon" style="background:#059669;"><i class="ti ti-infinity"></i></div>
+        <h3>Truly unlimited</h3>
+        <p>No data caps, no fair-use limits. Ever.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon" style="background:#2563eb;"><i class="ti ti-headset"></i></div>
+        <h3>24/7 support</h3>
+        <p>Real people, reachable by call or WhatsApp any time.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon" style="background:#d97706;"><i class="ti ti-shield-check"></i></div>
+        <h3>Guaranteed speeds</h3>
+        <p>You get exactly the speed you pay for, every time.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-banner">
+    <h2>Ready to get connected?</h2>
+    <p>Sign up today. Installation takes just one visit and Ksh 2,000.</p>
+    <div class="cta-btns">
+      <a class="wa-btn" href="https://wa.me/254769383683?text=Hi%2C+I%27d+like+to+sign+up+for+Elite+Fiber."><i class="ti ti-brand-whatsapp"></i> WhatsApp us</a>
+      <a class="call-btn" href="tel:+254769383683"><i class="ti ti-phone"></i> Call 0769 383 683</a>
+    </div>
+  </div>
+</div>
+
+<!-- PACKAGES -->
+<div id="packages" class="section">
+  <div class="packages-section">
+    <p class="section-eyebrow">// Fiber packages</p>
+    <h2 class="section-title">Simple, honest pricing</h2>
+    <p class="section-sub">All packages include unlimited data, symmetric speeds, and free technical support. No contracts.</p>
+    <div class="pkg-grid">
+      <div class="pkg">
+        <div class="pkg-name">Basic</div>
+        <div class="pkg-speed">10 <span>Mbps</span></div>
+        <hr class="pkg-divider"/>
+        <div class="pkg-price">1,500 <small>Ksh/mo</small></div>
+        <ul class="pkg-list">
+          <li><i class="ti ti-check"></i>Unlimited data</li>
+          <li><i class="ti ti-check"></i>Symmetric speeds</li>
+          <li><i class="ti ti-check"></i>1–3 devices</li>
+          <li><i class="ti ti-check"></i>24/7 support</li>
+        </ul>
+        <button class="pkg-btn" onclick="show('contact')">Get connected</button>
+      </div>
+      <div class="pkg featured">
+        <span class="pkg-badge">Most popular</span>
+        <div class="pkg-name">Standard</div>
+        <div class="pkg-speed">15 <span>Mbps</span></div>
+        <hr class="pkg-divider"/>
+        <div class="pkg-price">2,000 <small>Ksh/mo</small></div>
+        <ul class="pkg-list">
+          <li><i class="ti ti-check"></i>Unlimited data</li>
+          <li><i class="ti ti-check"></i>Symmetric speeds</li>
+          <li><i class="ti ti-check"></i>3–5 devices</li>
+          <li><i class="ti ti-check"></i>Streaming ready</li>
+        </ul>
+        <button class="pkg-btn" onclick="show('contact')">Get connected</button>
+      </div>
+      <div class="pkg">
+        <div class="pkg-name">Plus</div>
+        <div class="pkg-speed">20 <span>Mbps</span></div>
+        <hr class="pkg-divider"/>
+        <div class="pkg-price">2,500 <small>Ksh/mo</small></div>
+        <ul class="pkg-list">
+          <li><i class="ti ti-check"></i>Unlimited data</li>
+          <li><i class="ti ti-check"></i>Symmetric speeds</li>
+          <li><i class="ti ti-check"></i>5+ devices</li>
+          <li><i class="ti ti-check"></i>Work from home</li>
+        </ul>
+        <button class="pkg-btn" onclick="show('contact')">Get connected</button>
+      </div>
+      <div class="pkg">
+        <div class="pkg-name">Premium</div>
+        <div class="pkg-speed">25 <span>Mbps</span></div>
+        <hr class="pkg-divider"/>
+        <div class="pkg-price">3,000 <small>Ksh/mo</small></div>
+        <ul class="pkg-list">
+          <li><i class="ti ti-check"></i>Unlimited data</li>
+          <li><i class="ti ti-check"></i>Symmetric speeds</li>
+          <li><i class="ti ti-check"></i>Whole home</li>
+          <li><i class="ti ti-check"></i>Power users</li>
+        </ul>
+        <button class="pkg-btn" onclick="show('contact')">Get connected</button>
+      </div>
+    </div>
+    <p class="pkg-note"><strong>One-time installation fee: Ksh 2,000</strong> — includes setup, cabling, and equipment.</p>
+  </div>
+  <div class="cta-banner">
+    <h2>Not sure which package to pick?</h2>
+    <p>Call or WhatsApp us and we'll recommend the right fit for your home.</p>
+    <div class="cta-btns">
+      <a class="wa-btn" href="https://wa.me/254769383683"><i class="ti ti-brand-whatsapp"></i> WhatsApp us</a>
+      <a class="call-btn" href="tel:+254769383683"><i class="ti ti-phone"></i> Call now</a>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="section">
+  <div class="about-page">
+    <p class="section-eyebrow">// About Elite Fiber</p>
+    <h2 class="section-title">Who we are</h2>
+    <div class="about-page-inner">
+      <p>Elite Fiber is a Nairobi-based internet service provider built on one simple belief — fast, reliable internet should be accessible and affordable for every home in our community.</p>
+      <p>We run our own fiber infrastructure and work directly with our customers to ensure a seamless experience from the moment we install your connection to every day that follows. When something goes wrong, you reach a real person who knows your area.</p>
+      <p>Our network is purpose-built for how people actually use the internet today — streaming, video calls, remote work, online learning, and everything in between — with guaranteed speeds and absolutely no data caps.</p>
+      <div class="values">
+        <div class="val">
+          <i class="ti ti-bolt" style="color:#cc0000;"></i>
+          <h4>Reliability first</h4>
+          <p>Fiber infrastructure engineered for uptime, not just marketing speed claims.</p>
+        </div>
+        <div class="val">
+          <i class="ti ti-currency-dollar" style="color:#059669;"></i>
+          <h4>Honest pricing</h4>
+          <p>No hidden fees. No contracts. The price you see is what you pay, every month.</p>
+        </div>
+        <div class="val">
+          <i class="ti ti-map-pin" style="color:#2563eb;"></i>
+          <h4>Local team</h4>
+          <p>We're based here. Our technicians and support team know your neighborhood.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cta-banner">
+    <h2>Join the Elite Fiber network</h2>
+    <p>Get connected today with a one-time Ksh 2,000 installation.</p>
+    <div class="cta-btns">
+      <a class="wa-btn" href="https://wa.me/254769383683"><i class="ti ti-brand-whatsapp"></i> WhatsApp us</a>
+      <a class="call-btn" href="tel:+254769383683"><i class="ti ti-phone"></i> Call 0769 383 683</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="section">
+  <div class="contact-page">
+    <p class="section-eyebrow">// Contact</p>
+    <h2 class="section-title">Get in touch</h2>
+    <div class="contact-wrap">
+      <div class="contact-cards">
+        <div class="ccard ph">
+          <i class="ti ti-phone"></i>
+          <h3>Call us</h3>
+          <p>Speak to our team directly</p>
+          <a href="tel:+254769383683">0769 383 683</a>
+        </div>
+        <div class="ccard wa">
+          <i class="ti ti-brand-whatsapp"></i>
+          <h3>WhatsApp</h3>
+          <p>Chat with us anytime</p>
+          <a href="https://wa.me/254769383683">0769 383 683</a>
+        </div>
+      </div>
+      <div class="signup-box">
+        <h3>Sign up for Elite Fiber</h3>
+        <p>Ready to get connected? Reach out via WhatsApp or give us a call. Installation is done in a single visit with a one-time fee of Ksh 2,000, then just your chosen monthly package.</p>
+        <div class="cta-btns">
+          <a class="wa-btn" href="https://wa.me/254769383683?text=Hi%2C+I%27d+like+to+sign+up+for+Elite+Fiber+internet."><i class="ti ti-brand-whatsapp"></i> WhatsApp us</a>
+          <a class="call-btn" href="tel:+254769383683"><i class="ti ti-phone"></i> Call now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <h4><span style="color:#cc0000;">Elite</span> Fiber</h4>
+      <p>Fast Reliable Unlimited Internet Service.<br>Serving Nairobi and surrounding areas.</p>
+    </div>
+    <div>
+      <h4>Quick links</h4>
+      <ul class="footer-links">
+        <li><a onclick="show('home')">Home</a></li>
+        <li><a onclick="show('packages')">Packages</a></li>
+        <li><a onclick="show('about')">About</a></li>
+        <li><a onclick="show('contact')">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul class="footer-links">
+        <li><a href="tel:+254769383683">0769 383 683</a></li>
+        <li><a href="https://wa.me/254769383683">WhatsApp us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">Elite Fiber © 2026 · All rights reserved · Nairobi, Kenya</div>
+</footer>
+
+<script>
+function show(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
